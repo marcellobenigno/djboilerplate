@@ -1,0 +1,1 @@
+web: gunicorn djboilerplate.wsgi --log-file -
