@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>olá</title>
-</head>
-<body>
-<h1>Olá</h1>
-</body>
-</html>
+{% include 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="offset-2 col-md-8">
+            <div class="jumbotron">
+                <h1>Navbar example</h1>
+                <p class="lead">This example is a quick exercise to illustrate how the top-aligned navbar works. As you
+                    scroll,
+                    this navbar remains in its original position and moves with the rest of the page.</p>
+                <a class="btn btn-lg btn-primary" href="#" role="button">View navbar docs &raquo;</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
