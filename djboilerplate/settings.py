@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'djboilerplate.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-default_dburl = 'postgres://postgres:postgres@localhost/boilerplate'
+default_dburl = 'postgres://postgres:postgres@localhost/djboilerplate'
 
 DATABASES = {
     'default': config('DATABASE_URL', default=default_dburl, cast=db_url),
