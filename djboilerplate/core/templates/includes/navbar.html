@@ -15,8 +15,17 @@
                         <i class="fa fa-home"></i> Home
                     </a>
                 </li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'products:list' %}">
+                            <i class="fa fa-list"></i> Produtos
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
+
         {% endactiveurl %}
+
         {% activeurl %}
 
             <ul class="nav navbar-nav navbar-right my-2 my-lg-0">

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # my apps
     'djboilerplate.accounts',
     'djboilerplate.core',
+    'djboilerplate.products',
 
 ]
 

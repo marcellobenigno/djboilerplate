@@ -17,7 +17,14 @@
                 {% endbuttons %}
             </form>
         </div>
-
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <p class="text-right">
+                Não possui cadastro? <a href="{% url 'accounts:register' %}">
+                cadastre-se neste link</a>
+            </p>
+        </div>
     </div>
 
 {% endblock content %}
