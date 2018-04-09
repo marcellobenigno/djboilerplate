@@ -83,8 +83,10 @@ WSGI_APPLICATION = 'djboilerplate.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+default_dburl = 'postgres://postgres:postgres@localhost/boilerplate'
+
 DATABASES = {
-    'default': config('DATABASE_URL', cast=db_url),
+    'default': config('DATABASE_URL', default=default_dburl, cast=db_url),
 }
 # DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
