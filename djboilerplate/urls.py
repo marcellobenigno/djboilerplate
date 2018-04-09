@@ -18,5 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('djboilerplate.core.urls', namespace='core')),
+    path('conta/', include('djboilerplate.accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
 ]

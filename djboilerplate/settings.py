@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'leaflet',
     'djgeojson',
     'django_activeurl',
+    'bootstrap4',
     # my apps
+    'djboilerplate.accounts',
     'djboilerplate.core',
 
 ]
@@ -104,6 +106,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Auth
+LOGIN_URL = 'accounts:login'
+
+LOGIN_REDIRECT_URL = 'core:home'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/

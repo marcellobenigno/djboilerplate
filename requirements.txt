@@ -9,6 +9,7 @@ dj-static==0.0.6
 Django==2.0.4
 django-activeurl==0.1.12
 django-appconf==1.0.2
+django-bootstrap4==0.0.6
 django-classy-tags==0.8.0
 django-extensions==2.0.6
 django-geojson==2.11.0

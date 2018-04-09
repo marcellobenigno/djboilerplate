@@ -1,14 +1,18 @@
-{% include 'base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
     <div class="row">
-        <div class="offset-2 col-md-8">
+        <div class="col-md-12">
             <div class="jumbotron">
-                <h1>Navbar example</h1>
-                <p class="lead">This example is a quick exercise to illustrate how the top-aligned navbar works. As you
-                    scroll,
-                    this navbar remains in its original position and moves with the rest of the page.</p>
-                <a class="btn btn-lg btn-primary" href="#" role="button">View navbar docs &raquo;</a>
+                <h1><i class="fab fa-odnoklassniki-square"></i> Django Boilerplate</h1>
+                <p class="lead">Exemplo de uma aplicação com o
+                    <a href="https://www.djangoproject.com/">Django 2.0</a>,
+                    <a href="https://getbootstrap.com/">Bootstrap 4</a>,
+                    <a href="https://www.heroku.com/">Heroku</a> e
+                    <a href="https://aws.amazon.com/s3/">Amazon S3</a></p>
+                <a class="btn btn-lg btn-primary" href="{% url 'accounts:login' %}" role="button">
+                    <i class="fa fa-sign-in-alt"></i> Login
+                </a>
             </div>
         </div>
     </div>
