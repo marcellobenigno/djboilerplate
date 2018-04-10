@@ -7,7 +7,7 @@
             <hr>
 
             <p>
-                <a class="btn btn-success" href="#" role="button">
+                <a class="btn btn-success" href="{% url 'products:create' %}" role="button">
                     <i class="fa fa-plus"></i> Novo Produto</a>
             </p>
 
@@ -32,10 +32,10 @@
                             <a class="btn btn-primary" href="#" role="button">
                                 <i class="fa fa-info-circle"></i> Detalhes
                             </a>
-                            <a class="btn btn-info" href="#" role="button">
+                            <a class="btn btn-info" href="{% url 'products:update' obj.pk %}" role="button">
                                 <i class="fa fa-edit"></i> Editar
                             </a>
-                            <a class="btn btn-danger" href="#" role="button">
+                            <a class="btn btn-danger" href="{% url 'products:delete' obj.pk %}" role="button">
                                 <i class="fa fa-trash"></i> Apagar
                             </a>
                         </td>

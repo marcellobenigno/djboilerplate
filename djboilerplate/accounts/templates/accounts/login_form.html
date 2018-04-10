@@ -9,7 +9,7 @@
             <h1 class="text-center">Acesso Restrito</h1>
             <hr>
             {% bootstrap_messages %}
-            <form class="form-signin" method="post">
+            <form class="form" method="post">
                 {% csrf_token %}
                 {% bootstrap_form form %}
                 {% buttons %}
