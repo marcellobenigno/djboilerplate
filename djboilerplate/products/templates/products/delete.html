@@ -16,9 +16,13 @@
                 {% csrf_token %}
                 <p>Tem certeza que quer remover o produto <strong>{{ obj }}</strong>?</p>
                 {% buttons %}
-                    <button type="submit" class="btn btn-danger btn-block">Enviar</button>
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Apagar</button>
                 {% endbuttons %}
             </form>
+            <hr>
+            <a class="btn btn-info" href="{% url 'products:list' %}"
+               role="button"><i class="fa fa-arrow-left"></i> Voltar
+            </a>
         </div>
     </div>
 

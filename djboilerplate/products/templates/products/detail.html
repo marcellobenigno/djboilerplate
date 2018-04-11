@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Detalhes do Produto</h1>
+            <hr>
+            <dl>
+                <dt>NOME:</dt>
+                <dd>{{ obj.name }}</dd>
+                <dt>PREÇO:</dt>
+                <dd>R$ {{ obj.price }}</dd>
+                <dt>DESCRIÇÃO:</dt>
+                <dd>{{ obj.description }}</dd>
+                {% if obj.image %}
+                    <dt>IMAGEM DO PRODUTO</dt>
+                    <dd>
+                        <img src="{{ obj.image.url }}" height="200em" width="200em" alt="{{ obj }}">
+                    </dd>
+                {% endif %}
+            </dl>
+
+            <hr>
+            <a class="btn btn-info" href="{% url 'products:list' %}"
+               role="button"><i class="fa fa-arrow-left"></i> Voltar
+            </a>
+        </div>
+    </div>
+
+{% endblock content %}

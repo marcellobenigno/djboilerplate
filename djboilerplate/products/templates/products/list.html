@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
     <div class="row">
@@ -6,13 +7,15 @@
             <h1>Relação dos Produtos</h1>
             <hr>
 
+            {% bootstrap_messages %}
+
             <p>
                 <a class="btn btn-success" href="{% url 'products:create' %}" role="button">
                     <i class="fa fa-plus"></i> Novo Produto</a>
             </p>
 
-            <table class="table">
-                <thead class="thead-light">
+            <table class="table table-hover table-striped">
+                <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
@@ -27,16 +30,16 @@
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>{{ obj.name }}</td>
                         <td>R$ {{ obj.price }}</td>
-                        <td>{{ obj.description }}</td>
+                        <td>{{ obj.description|truncatechars:30 }}</td>
                         <td>
-                            <a class="btn btn-primary" href="#" role="button">
-                                <i class="fa fa-info-circle"></i> Detalhes
+                            <a class="btn btn-sm btn-outline-primary" href="{% url 'products:detail' obj.pk %}"
+                               role="button"><i class="fa fa-info-circle"></i> Detalhes
                             </a>
-                            <a class="btn btn-info" href="{% url 'products:update' obj.pk %}" role="button">
-                                <i class="fa fa-edit"></i> Editar
+                            <a class="btn btn-sm btn-outline-info" href="{% url 'products:update' obj.pk %}"
+                               role="button"><i class="fa fa-edit"></i> Editar
                             </a>
-                            <a class="btn btn-danger" href="{% url 'products:delete' obj.pk %}" role="button">
-                                <i class="fa fa-trash"></i> Apagar
+                            <a class="btn btn-sm btn-outline-danger" href="{% url 'products:delete' obj.pk %}"
+                               role="button"><i class="fa fa-trash"></i> Apagar
                             </a>
                         </td>
                     </tr>
@@ -49,3 +52,11 @@
     </div>
 
 {% endblock content %}
+
+{% block extras_js %}
+    <script type="text/javascript">
+        $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+            $(".alert").slideUp(500);
+        });
+    </script>
+{% endblock %}

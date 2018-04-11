@@ -31,28 +31,27 @@
             <ul class="nav navbar-nav navbar-right my-2 my-lg-0">
 
             {% if request.user.is_authenticated %}
-                <ul>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fa fa-user-circle"></i> {{ request.user }}
-                        </a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:logout' %}">
-                            <i class="fa fa-sign-out-alt"></i> Sair
-                        </a>
-                    </li>
-                </ul>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-user-circle"></i> {{ request.user }}
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:logout' %}">
+                        <i class="fa fa-sign-out-alt"></i> Sair
+                    </a>
+                </li>
+
             {% else %}
-                <ul>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:login' %}">
-                            <i class="fa fa-sign-in-alt"></i> Login
-                        </a>
-                    </li>
-                </ul>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'accounts:login' %}">
+                        <i class="fa fa-sign-in-alt"></i> Login
+                    </a>
+                </li>
+                
             {% endif %}
 
         {% endactiveurl %}
