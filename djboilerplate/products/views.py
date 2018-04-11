@@ -1,10 +1,12 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import ProductForm
 from .models import Product
 
 
+@login_required
 def list(request):
     product_list = Product.objects.all()
     context = {
@@ -13,6 +15,7 @@ def list(request):
     return render(request, 'products/list.html', context)
 
 
+@login_required
 def create(request):
     form = ProductForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -26,6 +29,7 @@ def create(request):
     return render(request, 'products/form.html', context)
 
 
+@login_required
 def detail(request, pk):
     obj = get_object_or_404(Product, pk=pk)
 
@@ -35,6 +39,7 @@ def detail(request, pk):
     return render(request, 'products/detail.html', context)
 
 
+@login_required
 def update(request, pk):
     obj = get_object_or_404(Product, pk=pk)
     form = ProductForm(request.POST or None,
@@ -50,6 +55,7 @@ def update(request, pk):
     return render(request, 'products/form.html', context)
 
 
+@login_required
 def delete(request, pk):
     obj = get_object_or_404(Product, pk=pk)
 
