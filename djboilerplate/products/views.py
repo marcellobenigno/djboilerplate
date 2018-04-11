@@ -14,13 +14,11 @@ def list(request):
 
 
 def create(request):
-    form = ProductForm()
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Produto criado com sucesso!')
-            return redirect('products:list')
+    form = ProductForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Produto criado com sucesso!')
+        return redirect('products:list')
 
     context = {
         'form': form,
@@ -39,13 +37,12 @@ def detail(request, pk):
 
 def update(request, pk):
     obj = get_object_or_404(Product, pk=pk)
-    form = ProductForm(instance=obj)
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES, instance=obj)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Produto editado com sucesso!')
-            return redirect('products:list')
+    form = ProductForm(request.POST or None,
+                       request.FILES or None, instance=obj)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Produto editado com sucesso!')
+        return redirect('products:list')
 
     context = {
         'form': form,
