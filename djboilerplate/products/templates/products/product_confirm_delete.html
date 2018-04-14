@@ -14,9 +14,9 @@
 
             <form class="form" method="post">
                 {% csrf_token %}
-                <p>Tem certeza que quer remover o produto <strong>{{ obj }}</strong>?</p>
+                <p>Tem certeza que quer deletar o produto <strong>{{ object }}</strong>?</p>
                 {% buttons %}
-                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Apagar</button>
+                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Deletar</button>
                 {% endbuttons %}
             </form>
             <hr>

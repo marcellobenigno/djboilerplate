@@ -9,15 +9,15 @@
             <hr>
             <dl>
                 <dt>NOME:</dt>
-                <dd>{{ obj.name }}</dd>
+                <dd>{{ object.name }}</dd>
                 <dt>PREÇO:</dt>
-                <dd>R$ {{ obj.price }}</dd>
+                <dd>R$ {{ object.price }}</dd>
                 <dt>DESCRIÇÃO:</dt>
-                <dd>{{ obj.description }}</dd>
-                {% if obj.image %}
+                <dd>{{ object.description }}</dd>
+                {% if object.image %}
                     <dt>IMAGEM DO PRODUTO</dt>
                     <dd>
-                        <img src="{{ obj.image.url }}" height="200em" width="200em" alt="{{ obj }}">
+                        <img src="{{ object.image.url }}" height="200em" width="200em" alt="{{ object }}">
                     </dd>
                 {% endif %}
             </dl>

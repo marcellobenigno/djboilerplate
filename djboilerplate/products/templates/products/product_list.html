@@ -25,21 +25,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for obj in product_list %}
+                {% for obj in object_list %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>{{ obj.name }}</td>
                         <td>R$ {{ obj.price }}</td>
                         <td>{{ obj.description|truncatechars:30 }}</td>
                         <td>
-                            <a class="btn btn-sm btn-outline-primary" href="{% url 'products:detail' obj.pk %}"
-                               role="button"><i class="fa fa-info-circle"></i> Detalhes
+                            <a class="btn btn-outline-primary" href="{% url 'products:detail' obj.pk %}"
+                               role="button"><i class="fa fa-info-circle"></i>
                             </a>
-                            <a class="btn btn-sm btn-outline-info" href="{% url 'products:update' obj.pk %}"
-                               role="button"><i class="fa fa-edit"></i> Editar
+                            <a class="btn btn-outline-warning" href="{% url 'products:update' obj.pk %}"
+                               role="button"><i class="fa fa-edit"></i>
                             </a>
-                            <a class="btn btn-sm btn-outline-danger" href="{% url 'products:delete' obj.pk %}"
-                               role="button"><i class="fa fa-trash"></i> Apagar
+                            <a class="btn btn-outline-danger" href="{% url 'products:delete' obj.pk %}"
+                               role="button"><i class="fa fa-trash"></i>
                             </a>
                         </td>
                     </tr>

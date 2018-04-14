@@ -1,70 +1,45 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 
 from .forms import ProductForm
 from .models import Product
 
 
-@login_required
-def list(request):
-    product_list = Product.objects.all()
-    context = {
-        'product_list': product_list,
-    }
-    return render(request, 'products/list.html', context)
+class ProductListView(LoginRequiredMixin, ListView):
+    model = Product
+    paginate_by = 5
 
 
-@login_required
-def create(request):
-    form = ProductForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        form.save()
-        messages.success(request, 'Produto criado com sucesso!')
-        return redirect('products:list')
-
-    context = {
-        'form': form,
-    }
-    return render(request, 'products/form.html', context)
+class ProductDetail(LoginRequiredMixin, SuccessMessageMixin, DetailView):
+    model = Product
 
 
-@login_required
-def detail(request, pk):
-    obj = get_object_or_404(Product, pk=pk)
-
-    context = {
-        'obj': obj,
-    }
-    return render(request, 'products/detail.html', context)
+class ProductCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'products/product_form.html'
+    success_url = reverse_lazy('products:list')
+    success_message = "Produto criado com sucesso!"
 
 
-@login_required
-def update(request, pk):
-    obj = get_object_or_404(Product, pk=pk)
-    form = ProductForm(request.POST or None,
-                       request.FILES or None, instance=obj)
-    if form.is_valid():
-        form.save()
-        messages.success(request, 'Produto editado com sucesso!')
-        return redirect('products:list')
-
-    context = {
-        'form': form,
-    }
-    return render(request, 'products/form.html', context)
+class ProductUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'products/product_form.html'
+    success_url = reverse_lazy('products:list')
+    success_message = "Produto editado com sucesso!"
 
 
-@login_required
-def delete(request, pk):
-    obj = get_object_or_404(Product, pk=pk)
+class ProductDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('products:list')
+    success_message = "Produto deletado com sucesso!"
 
-    if request.method == 'POST':
-        obj.delete()
-        messages.success(request, 'Produto deletado com sucesso!')
-        return redirect('products:list')
-
-    context = {
-        'obj': obj,
-    }
-    return render(request, 'products/delete.html', context)
+    def delete(self, request, *args, **kwargs):
+        obj = self.get_object()
+        messages.success(self.request, self.success_message % obj.__dict__)
+        return super(ProductDelete, self).delete(request, *args, **kwargs)
