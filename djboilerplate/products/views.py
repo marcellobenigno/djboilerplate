@@ -5,12 +5,13 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
 
 from .forms import ProductForm
+from .mixings import SearchMixin
 from .models import Product
 
 
-class ProductListView(LoginRequiredMixin, ListView):
+class ProductListView(LoginRequiredMixin, SearchMixin, ListView):
     model = Product
-    paginate_by = 5
+    paginate_by = 4
 
 
 class ProductDetail(LoginRequiredMixin, SuccessMessageMixin, DetailView):
