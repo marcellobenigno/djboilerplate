@@ -11,3 +11,9 @@ class SearchMixin(object):
                 Q(description__icontains=q)
             )
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_terms'] = self.request.GET.get('q')
+        context['total_itens'] = self.get_queryset().count()
+        return context
