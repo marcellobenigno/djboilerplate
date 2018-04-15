@@ -3,29 +3,32 @@
 
 {% block content %}
     <div class="row">
-
         <div class="col-md-12">
             <h1>Relação dos Produtos</h1>
             <hr>
-
             {% bootstrap_messages %}
         </div>
-
         <div class="col-md-4">
             <a class="btn btn-success" href="{% url 'products:create' %}" role="button">
                 <i class="fa fa-plus"></i> Novo Produto</a>
         </div>
-
         <div class="col-md-4 offset-4">
             {% include 'includes/form_search.html' %}
         </div>
-
     </div>
 
     <div class="row">
-
         <div class="col-md-12">
             <br>
+            {% if search_terms %}
+                {% with total=total_itens %}
+                    <h5 class="text-success">RESULTADO DA PESQUISA: {{ total }} registro{{ total|pluralize }} com o
+                        termo pesquisado:
+                        <strong>{{ search_terms }}</strong>
+                    </h5>
+                {% endwith %}
+
+            {% endif %}
             <table class="table table-hover table-striped">
                 <thead class="thead-dark">
                 <tr>
@@ -58,11 +61,8 @@
                 {% endfor %}
                 </tbody>
             </table>
-
             {% include 'pagination.html' %}
-
         </div>
-
     </div>
 
 {% endblock content %}

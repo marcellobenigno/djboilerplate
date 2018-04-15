@@ -1,12 +1,13 @@
-class SearchMixin(object):
+from django.db.models import Q
 
+
+class SearchMixin(object):
     def get_queryset(self):
         queryset = super(SearchMixin, self).get_queryset()
-        name = self.request.GET.get('name') or ''
-        description = self.request.GET.get('description') or ''
-        return queryset.filter(
-            name__icontains=name,
-            description__icontains=description
-        )
-
+        q = self.request.GET.get('q')
+        if q:
+            return queryset.filter(
+                Q(name__icontains=q) |
+                Q(description__icontains=q)
+            )
         return queryset
