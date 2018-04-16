@@ -83,5 +83,3 @@ mediafiles
 
 # python notebooks
 *.ipynb
-
-local_settings.py
