@@ -5,9 +5,9 @@
     <div class="row">
         <div class="col-md-12">
             {% if object %}
-                <h1>Editar Produto</h1>
+                <h2><i class="fa fa-edit"></i> Editar Produto</h2>
             {% else %}
-                <h1>Novo Produto</h1>
+                <h2><i class="fa fa-plus"></i> Novo Produto</h2>
             {% endif %}
             <hr>
 
@@ -15,7 +15,7 @@
                 {% csrf_token %}
                 {% bootstrap_form form %}
                 {% buttons %}
-                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-arrow-up"></i> Enviar</button>
                 {% endbuttons %}
             </form>
 

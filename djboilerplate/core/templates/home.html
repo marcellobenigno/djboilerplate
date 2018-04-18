@@ -3,24 +3,30 @@
 {% block content %}
     <div class="row">
         <div class="col-md-12">
-            <div class="jumbotron">
-                <h1><i class="fab fa-odnoklassniki-square"></i> Django Boilerplate</h1>
-                <p class="lead">Exemplo de uma aplicação com o
-                    <a href="https://www.djangoproject.com/">Django 2.0</a>,
-                    <a href="https://getbootstrap.com/">Bootstrap 4</a>,
-                    <a href="https://www.heroku.com/">Heroku</a> e
-                    <a href="https://aws.amazon.com/s3/">Amazon S3</a></p>
-                {% if not request.user.is_authenticated %}
-                    <a class="btn btn-lg btn-primary" href="{% url 'accounts:login' %}" role="button">
-                        <i class="fa fa-sign-in-alt"></i> Login
-                    </a>
-                {% endif %}
-            </div>
 
+            {% if not request.user.is_authenticated %}
+                <div class="jumbotron">
+                    <h1><i class="fab fa-odnoklassniki-square"></i> Django Boilerplate</h1>
+                    <p class="lead">Exemplo de uma aplicação com o
+                        <a href="https://www.djangoproject.com/">Django 2.0</a>,
+                        <a href="https://getbootstrap.com/">Bootstrap 4</a>,
+                        <a href="https://www.heroku.com/">Heroku</a> e
+                        <a href="https://aws.amazon.com/s3/">Amazon S3</a></p>
+                    {% if not request.user.is_authenticated %}
+                        <a class="btn btn-lg btn-primary" href="{% url 'accounts:login' %}" role="button">
+                            <i class="fa fa-sign-in-alt"></i> Login
+                        </a>
+                    {% endif %}
+                </div>
 
-            {% if request.user.is_authenticated %}
+            {% else %}
+
+                <h2>Painel Adminstrativo</h2>
+
                 <hr>
                 <h3>Olá {{ request.user.username }}, seja bem vindo.</h3>
+
+
 
             {% endif %}
 

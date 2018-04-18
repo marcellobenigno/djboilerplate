@@ -4,7 +4,7 @@
 {% block content %}
     <div class="row">
         <div class="col-md-12">
-            <h1>Relação dos Produtos</h1>
+            <h2><i class="fa fa-list"></i> Relação dos Produtos</h2>
             <hr>
             {% bootstrap_messages %}
         </div>
@@ -43,7 +43,7 @@
                 {% for obj in object_list %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ obj.name }}</td>
+                        <td><a href="{% url 'products:detail' pk=obj.pk %}">{{ obj.name }}</a></td>
                         <td>R$ {{ obj.price }}</td>
                         <td>{{ obj.description|truncatechars:30 }}</td>
                         <td>
