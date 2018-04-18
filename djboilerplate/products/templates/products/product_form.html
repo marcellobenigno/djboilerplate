@@ -4,7 +4,11 @@
 {% block content %}
     <div class="row">
         <div class="col-md-12">
-            <h1>Cadastro de Produto</h1>
+            {% if object %}
+                <h1>Editar Produto</h1>
+            {% else %}
+                <h1>Novo Produto</h1>
+            {% endif %}
             <hr>
 
             <form class="form" method="post" enctype="multipart/form-data">
@@ -14,6 +18,7 @@
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 {% endbuttons %}
             </form>
+
             <hr>
             <a class="btn btn-info" href="{% url 'products:list' %}"
                role="button"><i class="fa fa-arrow-left"></i> Voltar
